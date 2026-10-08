@@ -1,0 +1,53 @@
+/*首页布局*/
+.home-layout{
+    display: flex;
+    max-width: 1200px;
+    margin: 30px auto;
+    gap:30px;
+    padding:0 20px;
+}
+.main-content{
+    flex:3;
+}
+.sidebar{
+    flex:1;
+    background:#fff;
+    padding:20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #ddd;
+}
+/*页面排版*/
+.two-col{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+.col-item{
+    flex: 1 1 42%;
+    min-width: 300px;
+    border: 2px solid #1782c5;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+}
+/*适配手机*/
+@media(max-width:768px){
+    .home-layout{
+        flex-direction: column;
+    }
+    .nav-bar ul{
+        flex-direction: column;
+        text-align:center;
+    }
+    .photo-gallery, .hometown-photos img{
+        width:45%;/*一行两个图片*/
+        height: 20vh; /* 占屏幕高度的20% */
+        object-fit: cover;
+    }
+    .profile-img{
+    width:100%;
+    border-radius: 50%;
+    margin-bottom:10px;
+    }
+}

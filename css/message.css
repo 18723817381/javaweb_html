@@ -1,0 +1,33 @@
+body{
+    background-image: url('../picture/sky.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+}
+html, body{
+    height: 100%;
+    margin: 0;
+}
+main{
+    flex: 1;
+    padding: 30px;
+}
+/*表单*/
+input,textarea{
+    padding:6px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+input[type="submit"]{
+    background:#2c3e50;
+    color:white;
+    border:none;
+    padding:8px 20px;
+    cursor:pointer;
+}
+input[type="submit"]:hover{
+    background:#34495e;
+}

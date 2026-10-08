@@ -1,0 +1,48 @@
+html{
+    height:100%;
+}
+body{
+    font-family: "Microsoft Yahei", sans-serif;
+    line-height: 1.6;
+    background-color: #f7f9fc;
+    color: #333;
+    height: 100%;
+    margin: 0;
+}
+main{
+    max-width:1000px;
+    margin:30px auto;
+    padding:0 20px;
+}
+h1,h2,h3{
+    margin-bottom:12px;
+    color:#2c3e50;
+    font-weight: bold;
+    font-family: "Microsoft Yahei", sans-serif;
+}
+h1{
+    font-size:1.6em;
+}
+h2{
+    font-size:1.4em;
+}
+h3{
+    font-size:1.2em;
+}
+p{
+    margin-bottom:12px;
+    font-family: "songti", sans-serif;
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+figure img{
+    max-width:100%;
+    height:auto;
+    margin:8px;
+}
+figcaption{
+    text-align:center;
+    color:#666;
+}
