@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    body{
+        background-image: url('picture/sky.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+    }
+    html, body{
+        height: 100%;
+        margin: 0;
+    }
+    main{
+        flex: 1;
+        padding: 30px;
+    }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <ul>
+            <li class="nav-item"><a href="MyBlog.html">个人首页</a></li>
+            <li class="nav-item"><a href="LifeMoments.html">生活瞬间</a></li>
+            <li class="nav-item"><a href="Plan.html">目标规划</a></li>
+            <li class="nav-item"><a href="Hometown.html">我的家乡</a></li>
+            <li class="nav-item"><a href="Message.html">给我留言</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>欢迎给我留言~</h1>
+        <form action="#" method="post">
+            <label for="name">姓名:</label>
+            <input type="text" id="name" name="name" placeholder="例如：小林" required><br><br>
+
+            <label for="email">邮箱:</label>
+            <input type="email" id="email" name="email" placeholder="例如：example@email.com" style="width: 200px;" required><br><br>
+
+            <label for="message">留言内容:</label><br>
+            <textarea id="message" name="message" rows="5" cols="40" required></textarea><br><br>
+
+            <input type="submit" value="提交留言">
+        </form>
+    </main>
+</body>
+<footer>
+    <p>探索自我，展示未来</p>
+</footer>
+</html>
