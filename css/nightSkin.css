@@ -1,0 +1,60 @@
+body.night {
+    background-color: #121212;
+    color: #eee;
+}
+
+/* 通用section盒子 */
+body.night section{
+    background:#222;
+    box-shadow:0 2px 6px #000;
+}
+
+/* 导航栏 */
+body.night .nav-bar{
+    background-color: #1f2b38;
+}
+body.night .nav-item a:hover{
+    background-color: #35475a;
+}
+
+/* 页脚 */
+body.night footer{
+    background:#1f2b38;
+    color:#eee;
+}
+
+/* section盒子侧边栏 */
+body.night .big-card,
+body.night .sidebar
+{
+    background:#222;
+}
+/* h2文字 */
+body.night .title2,
+body.night .profile-name{
+    color:#eee;
+}
+/*按钮样式*/
+#skinBtn{
+    position:absolute;
+    top: 14px;
+    right: 20px;
+
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #2c3e50;
+    color: #fff;
+    transition: 0.3s;
+}
+#skinBtn:hover{
+    background: #34495e;
+}
+body.night #skinBtn{
+    background: #607890;
+}
+body.night #skinBtn:hover{
+    background: #728ca8;
+}

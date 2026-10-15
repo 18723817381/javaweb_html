@@ -40,7 +40,8 @@
         flex-direction: column;
         text-align:center;
     }
-    .photo-gallery, .hometown-photos img{
+    .photo-gallery img,
+    .hometown-photos img{
         width:45%;/*一行两个图片*/
         height: 20vh; /* 占屏幕高度的20% */
         object-fit: cover;
