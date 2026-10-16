@@ -1,6 +1,6 @@
 .register-box{
-    width: 420px;
-    margin: 150px auto;
+    width: 450px;
+    margin: 80px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -26,6 +26,9 @@ input{
 }
 .error{
     color:red;
+}
+.info{
+    color: #666;
 }
 #submitBtn{
     background: #2c3e50;
