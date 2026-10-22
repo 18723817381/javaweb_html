@@ -1,0 +1,59 @@
+const messages = [];
+let messageId = 1;
+//获取dom元素
+const form = document.querySelector('.message-form');
+const messageCount = document.querySelector('#message-count');
+const messageList = document.querySelector('#message-list');
+
+function renderMessage(){
+    messageList.innerHTML = '';
+    messageCount.innerHTML = `一共有${messages.length}条留言`;
+
+    messages.forEach(item=>{
+        //创建li
+        const li = document.createElement('li');
+        //创建用户名节点
+        const nameP = document.createElement('p');
+        nameP.innerText = `姓名：${item.name}`;
+        //创建邮箱节点
+        const emailP = document.createElement('p');
+        emailP.innerText = `邮箱：${item.email}`;
+        //创建留言内容节点
+        const contentP = document.createElement('p');
+        contentP.innerText = `留言：${item.content}`;
+        //把p加入li
+        li.append(nameP);
+        li.append(emailP);
+        li.append(contentP);
+        //把li加入ul
+        messageList.append(li);
+    });
+}
+form.addEventListener("submit",e=>{
+    e.preventDefault();
+    //获取输入框的元素
+    const nameTnput = form.name;
+    const emailInput = form.email;
+    const contentInput = form.msgcontent;
+
+    const name = nameTnput.value.trim();
+    const email = emailInput.value.trim();
+    const content = contentInput.value.trim();
+
+    if(name===''||content===''||email===''){
+        alert('昵称、邮箱和留言不能为空！');
+        return ;
+    }
+    //组装留言对象，push进数组
+    const newMsg = {
+        messageId:messageId++,
+        name:name,
+        email:email,
+        content:content
+    };
+    messages.push(newMsg);
+    //渲染函数
+    renderMessage();
+    nameTnput.value='';
+    contentInput.value='';
+});

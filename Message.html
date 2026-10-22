@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/message.css">
+    <script src="JS/showMessage.js" defer></script>
     
 </head>
 <body>
@@ -32,13 +33,16 @@
                 <input type="text" id="name" name="name" placeholder="例如：小林" required><br><br>
 
                 <label for="email">邮箱:</label>
-                <input type="email" id="email" name="email" placeholder="例如：example@email.com" style="width: 200px;" required><br><br>
+                <input type="email" id="email" name="email" placeholder="例如：example@email.com" required><br><br>
 
-                <label for="message">留言内容:</label><br>
-                <textarea id="message" name="message" rows="5" cols="40" required></textarea><br><br>
+                <label for="message">留言内容:(不超过300字)</label><br>
+                <textarea id="msgcontent" name="msgcontent" rows="5" cols="40" required></textarea><br><br>
 
                 <input type="submit" value="提交留言">
             </form>
+            <h3>留言列表</h3>
+            <p id="message-count"></p>
+            <ul id="message-list" class="message-list"></ul>
         </section>
     </main>
     <footer>

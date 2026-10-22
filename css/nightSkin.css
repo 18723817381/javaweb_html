@@ -8,7 +8,11 @@ body.night section{
     background:#222;
     box-shadow:0 2px 6px #000;
 }
-
+/*新增文章部分*/
+body.night .article-card{
+    background: #222;
+    color: #eee;
+}
 /* 导航栏 */
 body.night .nav-bar{
     background-color: #1f2b38;

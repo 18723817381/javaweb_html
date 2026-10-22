@@ -16,10 +16,21 @@ main{
     padding: 30px;
 }
 /*表单*/
-input,textarea{
+.message-form{
+    width: 400px;
+    margin: 30px auto;
+}
+.message-form input,
+.message-form textarea{
     padding:6px;
     border:1px solid #ccc;
     border-radius:4px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.message-form textarea{
+    min-height: 100px;
+    resize: vertical;
 }
 input[type="submit"]{
     background:#2c3e50;
@@ -27,7 +38,22 @@ input[type="submit"]{
     border:none;
     padding:8px 20px;
     cursor:pointer;
+    width: 100px;
 }
 input[type="submit"]:hover{
     background:#34495e;
+}
+.message-list{
+    padding: 0;
+    margin-top: 16px;
+}
+.message-list li{
+    border: #2c3e50 solid 1px;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #ddd;
+}
+.message-list li p{
+    margin: 6px 0;
 }

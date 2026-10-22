@@ -1,0 +1,10 @@
+.article-card{
+    background: #fff;
+    border: #91bcda solid 2px;
+    padding: 10px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+}
+.article-card h3{
+    margin: 6px 0;
+}

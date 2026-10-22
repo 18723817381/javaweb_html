@@ -15,7 +15,7 @@ const resultMsg = document.getElementById('resultMsg');
 
 //正则表达式
 const regUser = /^\w{4,12}$/;//用户名
-const regEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+$/;//邮箱
+const regEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+$/;//邮箱368301504@qq.com
 const regPhone = /^1\d{10}$/;//电话
 const regPwd = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,20}$/;//密码
 

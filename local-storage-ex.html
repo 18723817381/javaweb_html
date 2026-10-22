@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>localStorage示例</title>
+  </head>
+  <body>
+    <h3>学生信息本地保存</h3>
+    <p>姓名：<input id="name" type="text" /></p>
+    <p>成绩：<input id="score" type="number" /></p>
+    <button id="save-btn">保存信息</button>
+    <button id="read-btn">读取信息</button>
+    <p id="result"></p>
+    
+    <script>
+      // Q1：完善保存工具函数
+      function saveToLocal(key, value) {
+          localStorage.setItem(key,JSON.stringify(value));
+      }
+
+      // Q2：完善读取工具函数
+      function getFromLocal(key) {
+          const str = localStorage.getItem(key);
+          return str? JSON.parse(str):null;
+      }
+
+      // 获取页面元素
+      const nameInput = document.querySelector("#name");
+      const scoreInput = document.querySelector("#score");
+      const result = document.querySelector("#result");
+
+      // 点击保存按钮，保存学生信息
+      document.querySelector("#save-btn").addEventListener("click", () => {
+        // Q3：调用前面的saveToLocal函数，将对象保存到localStorage中
+        let stu = {
+          name:nameInput.value,
+          score:scoreInput.value
+        }
+        saveToLocal("student",stu);
+        result.innerText = "保存成功！";
+
+      });
+
+      // 点击读取按钮，读取学生信息
+      document.querySelector("#read-btn").addEventListener("click", () => {
+        // Q4：调用前面的getFromLocal函数，从本地存储取出学生信息对象，显示在id="result"的p标签中
+        let stu = getFromLocal("student");
+        if(stu){
+          result.innerText = `姓名：${stu.name},成绩：${stu.score}`;
+        }
+        else{
+          result.innerText = "暂无学生信息！"
+        }
+      });
+      // Q5：成功后，再修改以上代码
+      // 允许输入多个学生信息，保存到数组中，将数组保存到localStorage中，并在读取时显示所有学生信息
+
+    </script>
+  </body>
+</html>
