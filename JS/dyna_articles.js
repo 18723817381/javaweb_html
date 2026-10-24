@@ -3,6 +3,7 @@ const articles = [
     {
         title:"第一次搭建个人静态博客",
         time:"2026-9-28",
+        category:'前端',
         content:`从零规划页面结构、拆分 CSS 样式文件、实现黑夜皮肤切换，这次个人静态博客搭建，是一次收获很大的前端实践。
         <br>最开始我先梳理网站整体框架，规划好首页、生活瞬间、目标规划、我的家乡、留言页一共五个页面，采用语义化标签搭建页面骨架，把导航、主内容区、侧边栏、页脚的布局提前定好。
         为了代码整洁好维护，我没有把所有样式堆在一个文件里，而是按照功能拆分了重置样式、基础样式、公共样式、布局样式和黑夜主题样式，各司其职。
@@ -15,17 +16,26 @@ const articles = [
     {
         title:"我的Javascript复习计划",
         time:"2026-10-1",
+        category:'学习',
         content:"每天完成一个小练习，再用自己的方式理解"
     },
     {
         title: "localStorage本地存储学习笔记",
         time: "2026-10-21",
+        category:'前端',
         content: "localStorage只能存字符串，对象数组需要JSON转换，可以用来做留言板、记住用户皮肤偏好。" 
     },
     {
         title:"给博客增加动态文章",
         time:"2026-10-22",
+        category:'前端',
         content:"还在努力中....."
+    },
+    {
+        title:'周末出游记录',
+        time:'2026-10-24',
+        category:'生活',
+        content:'拼豆真好玩'
     }
 ];
 const articleList = document.querySelector('#article-list');

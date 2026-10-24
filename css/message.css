@@ -46,6 +46,8 @@ input[type="submit"]:hover{
 .message-list{
     padding: 0;
     margin-top: 16px;
+    height: 300px;
+    overflow-y: auto;
 }
 .message-list li{
     border: #2c3e50 solid 1px;
@@ -56,4 +58,8 @@ input[type="submit"]:hover{
 }
 .message-list li p{
     margin: 6px 0;
+}
+.del-btn{
+    background-color: #2c3e50;
+    color: #ddd;
 }

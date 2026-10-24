@@ -30,10 +30,24 @@ function renderMessage(){
         //创建留言内容节点
         const contentP = document.createElement('p');
         contentP.innerText = `留言：${item.content}`;
+
+        //删除按钮
+        const delBtn = document.createElement('button');
+        delBtn.type = "button";
+        delBtn.className = 'del-btn';
+        delBtn.innerText = "删除";
+        delBtn.dataset.id = item.messageId;//给按钮加上留言id的属性
+        delBtn.addEventListener('click',function(){
+            const delId = Number(this.dataset.id);
+            messages = messages.filter(msg=>msg.messageId !==delId);
+            saveToLocal(STORAGE_KEY,messages);
+            renderMessage();
+        })
         //把p加入li
         li.append(nameP);
         li.append(emailP);
         li.append(contentP);
+        li.append(delBtn);
         //把li加入ul
         messageList.append(li);
     });

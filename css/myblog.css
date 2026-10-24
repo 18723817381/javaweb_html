@@ -24,3 +24,12 @@
     cursor: pointer;
     background-color: #91bcda;
 }
+/*选择框样式*/
+#category-select{
+    border: #91bcda 2px solid;
+    outline: none;
+    padding: 2px 5px;
+}
+#category-select:focus{
+    border-color: #138de9;
+}
