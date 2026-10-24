@@ -1,5 +1,14 @@
-const messages = [];
+const STORAGE_KEY = 'messageData';
+//优先从本地读取留言
+let messages = getFromLocal(STORAGE_KEY)||[];
 let messageId = 1;
+if(messages.length>0){
+    const maxId = Math.max(...messages.map(item=>item.messageId));
+    messageId = maxId + 1;
+}
+
+//const messages = [];
+//let messageId = 1;
 //获取dom元素
 const form = document.querySelector('.message-form');
 const messageCount = document.querySelector('#message-count');
@@ -32,11 +41,11 @@ function renderMessage(){
 form.addEventListener("submit",e=>{
     e.preventDefault();
     //获取输入框的元素
-    const nameTnput = form.name;
+    const nameInput = form.name;
     const emailInput = form.email;
     const contentInput = form.msgcontent;
 
-    const name = nameTnput.value.trim();
+    const name = nameInput.value.trim();
     const email = emailInput.value.trim();
     const content = contentInput.value.trim();
 
@@ -52,8 +61,12 @@ form.addEventListener("submit",e=>{
         content:content
     };
     messages.push(newMsg);
+    //保存到本地
+    saveToLocal(STORAGE_KEY,messages);
     //渲染函数
     renderMessage();
-    nameTnput.value='';
+    nameInput.value='';
+    emailInput.value='';
     contentInput.value='';
 });
+renderMessage();

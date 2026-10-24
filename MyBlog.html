@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/myblog.css">
     <script src="JS/skin.js" defer></script>
     <script src="JS/dyna_articles.js" defer></script>
+    <script src="JS/article_search.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -50,6 +51,11 @@
             <section>
                 <h2 class="title2">随笔文章Articles</h2>
                 <p id="article-count"></p>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="输入文章标题搜索">
+                    <button id="search-btn">搜索</button>
+                    <button id="reset-btn">重置</button>
+                </div>
                 <div id="article-list"></div>
             </section>
         </main>
