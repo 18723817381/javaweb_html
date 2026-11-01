@@ -10,9 +10,8 @@
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/message.css">
-        <script src="JS/storage.js" defer></script>
-    <script src="JS/showMessage.js" defer></script>
-    
+    <!-- <script src="JS/storage.js" defer></script> -->
+    <!-- <script src="JS/showMessage.js" defer></script> -->
 </head>
 <body>
     <header class="header">
@@ -28,26 +27,83 @@
     </header>
     <main>
         <h1>欢迎给我留言~</h1>
-        <section>
-            <form class="message-form" action="#" method="post">
+        <section id="app">
+            <form class="message-form" @submit.prevent="submitMessage">
                 <label for="name">姓名:</label>
-                <input type="text" id="name" name="name" placeholder="例如：小林" required><br><br>
+                <input id="name" ref="nameInput" v-model="name" placeholder="例如：小林" required><br><br>
 
                 <label for="email">邮箱:</label>
-                <input type="email" id="email" name="email" placeholder="例如：example@email.com" required><br><br>
+                <input type="email" id="email" v-model="email" placeholder="例如：example@email.com" required><br><br>
 
                 <label for="message">留言内容:(不超过300字)</label><br>
-                <textarea id="msgcontent" name="msgcontent" rows="5" cols="40" required></textarea><br><br>
+                <textarea id="message" v-model="message" rows="5" cols="40" required></textarea><br><br>
 
-                <input type="submit" value="提交留言">
+                <button type="submit">提交留言</button>
             </form>
             <h3>留言列表</h3>
-            <p id="message-count"></p>
-            <ul id="message-list" class="message-list"></ul>
+            <p id="message-count"> 共{{ messages.length }} 条留言</p>
+            <p v-if="messages.length === 0">暂无留言，快来抢沙发吧！</p>
+            <p v-else>留言内容如下：</p>
+            <ul id="message-list" class="message-list">
+                <li v-for="(item,index) in messages" :key="index">
+                    <p><strong>姓名:</strong> {{ item.name }}</p>
+                    <p>邮箱: {{ item.email }}</p>
+                    <p>留言内容: {{ item.message }}</p>
+                    <button type="button" class="del-btn" @click="deleteMessage(index)">删除留言</button>
+                </li>
+            </ul>
         </section>
     </main>
     <footer>
         <p>探索自我，展示未来</p>
     </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const APP = {
+            data() {
+                return {
+                    name: '',
+                    email: '',
+                    message: '',
+                    messages: []
+                };
+            },
+            mounted() {
+                const storedMessages = localStorage.getItem('BlogMessages');
+                if (storedMessages) {
+                    this.messages = JSON.parse(storedMessages);
+                }
+            },
+            methods:{
+                submitMessage(){
+                    if(this.message.length > 300){
+                        alert("留言内容不能超过300字！");
+                        return;
+                    }
+                    const newMessage = {
+                        name: this.name.trim(),
+                        email: this.email.trim(),
+                        message: this.message.trim()
+                    };
+                    this.messages.push(newMessage);
+                    this.name = '';
+                    this.email = '';
+                    this.message = '';
+                    alert("留言提交成功！");
+                    this.$refs.nameInput.focus();
+                },
+                deleteMessage(index){
+                    if(confirm("确定要删除这条留言吗？")){
+                        this.messages.splice(index, 1);
+                        this.saveToLocal();
+                    }
+                },
+                saveToLocal(){
+                    localStorage.setItem('BlogMessages', JSON.stringify(this.messages));
+                }
+            }
+        }
+        Vue.createApp(APP).mount('#app');
+    </script>
 </body>
 </html>
