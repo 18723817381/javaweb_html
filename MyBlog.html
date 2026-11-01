@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="css/nightSkin.css">
     <link rel="stylesheet" href="css/myblog.css">
     <script src="JS/skin.js" defer></script>
+    <!--
     <script src="JS/dyna_articles.js" defer></script>
     <script src="JS/article_search.js" defer></script>
+    -->
 </head>
 <body>
     <header class="header">
@@ -48,21 +50,31 @@
                     <figcaption class="photo-caption">生活中的美好瞬间</figcaption>
                 </figure>
             </section>
-            <section>
+            <section id="app">
                 <h2 class="title2">随笔文章Articles</h2>
-                <p id="article-count"></p>
+                <p id="article-count">
+                    显示 {{filteredArticles.length}} / 共 {{articleList.length}}篇文章
+                </p>
                 <div class="search-box">
-                    <input type="text" id="search-input" placeholder="输入文章标题搜索">
-                    <select id="category-select">
+                    <input type="text" v-model="keyword" id="search-input" placeholder="输入文章标题搜索">
+                    <select v-model="category" id="category-select">
                         <option value="">全部分类</option>
                         <option value="前端">前端</option>
                         <option value="生活">生活</option>
                         <option value="学习">学习</option>
                     </select>
-                    <button id="search-btn">搜索</button>
-                    <button id="reset-btn">重置</button>
+                    <!-- <button id="search-btn">搜索</button> -->
+                    <button id="reset-btn" @click="resetSearch">重置</button>
+                    <p>{{searchFeedback}}</p>
                 </div>
-                <div id="article-list"></div>
+                <div id="article-list">
+                    <article v-for="(item,index) in filteredArticles" :key="index" class="article-card">
+                        <div class="meta"><time>{{item.time}}</time></div>
+                        <h3 class="title2">{{item.title}}</h3>
+                        <p>{{item.content}}</p>
+                    </article>
+                    <p v-if="filteredArticles.length===0&&(keyword||category)">没有找到符合条件的博文</p>
+                </div>
             </section>
         </main>
 
@@ -81,5 +93,75 @@
     <footer class="footer">
         <p>探索自我，展示未来</p>
     </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="JS/data.js"></script>
+    <script type="text/javascript">
+        const APP = {
+            data(){
+                return{
+                    articleList:articles,
+                    keyword:"",
+                    category:"",
+                    searchFeedback:"尚未输入搜索关键词！"
+                };
+            },
+            computed:{
+                filteredArticles(){
+                    let kw = this.keyword.trim().toLowerCase();
+                    let cate = this.category;
+                    return this.articleList.filter(item=>{
+                        const matchKey = kw===""||item.title.toLowerCase().includes(kw);
+                        const matchCate = cate===""||item.category ===cate;
+                        return matchCate&&matchKey;
+                    })
+                }
+            },
+            watch:{
+                /*
+                keyword(newValue,oldValue){
+                    const kw = newValue.trim();
+                    if(kw===""){
+                        this.searchFeedback = "尚未输入搜索关键词！";
+                    }else{
+                        this.searchFeedback = `正在搜索：${kw}`;
+                    }
+                },
+                category(newVal){
+                    if(newVal){
+                        this.searchFeedback = `选中分类：${newVal}`;
+                    }else{
+                        this.searchFeedback = "尚未选择分类！"
+                    }
+                }
+                */
+                keyword(){
+                    this.updateFeedback();
+                },
+                category(){
+                    this.updateFeedback();
+                }
+            },
+            methods:{
+                updateFeedback(){
+                    const kw = this.keyword.trim();
+                    const cate = this.category;
+                    if(kw===""&&cate===""){
+                        this.searchFeedback = "可以输入关键词或选择分类筛选文章";
+                    }else if(kw!==""&&cate===""){
+                        this.searchFeedback = `正在搜索：${kw}`;
+                    }else if(kw===""&&cate!==""){
+                        this.searchFeedback = `选中分类：${cate}`;
+                    }else{
+                        this.searchFeedback = `正在搜索：${kw}，选中分类：${cate}`;
+                    }
+                },
+                resetSearch(){
+                    this.keyword = "";
+                    this.category =""
+                }
+            }
+        }
+        Vue.createApp(APP).mount('#app');
+    </script>
 </body>
 </html>
